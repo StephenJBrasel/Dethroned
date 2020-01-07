@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour {
 
@@ -6,7 +7,11 @@ public class Shop : MonoBehaviour {
 	public TurretBlueprint missileLauncher;
 	public TurretBlueprint laserBeamer;
 
-	BuildManager buildManager;
+	public GameObject[] outlines;
+
+	private Outline priorSelection = null;
+
+	private BuildManager buildManager;
 
 	void Start ()
 	{
@@ -29,6 +34,62 @@ public class Shop : MonoBehaviour {
 	{
 		Debug.Log("Laser Beamer Selected");
 		buildManager.SelectTurretToBuild(laserBeamer);
+	}
+
+	public void SelectWeapon(string turretType)
+	{
+		TurretBlueprint tb = null;
+
+		switch (turretType)
+		{
+			case "StandardTurretItem":
+				tb = standardTurret;
+				break;
+			case "MissileLauncherItem":
+				tb = missileLauncher;
+				break;
+			case "LaserBeamerItem":
+				tb = laserBeamer;
+				break;
+			default:
+				break;
+		}
+		//outlines
+		ChangeSelection(turretType);
+		Debug.Log($"{turretType} Selected");
+		buildManager.SelectTurretToBuild(tb);
+	}
+
+	public void ToggleSelection(string turretType)
+	{
+		foreach (GameObject go in outlines)
+		{
+			Outline outline = go.GetComponent<Outline>();
+			if (outline)
+			{
+				outline.enabled = false;
+			} 
+			if (go.name.Contains(turretType))
+			{
+				outline.enabled = true;
+			}
+		}
+	}
+
+	public void ChangeSelection(string turretType)
+	{
+		foreach (GameObject go in outlines)
+		{
+			if (go.name == (turretType))
+			{
+				Outline outline = go.GetComponent<Outline>();
+
+				if (priorSelection) priorSelection.enabled = false;
+				outline.enabled = true;
+				priorSelection = outline;
+				return;
+			}
+		}
 	}
 
 }
