@@ -7,4 +7,8 @@ public class Wave {
 	public int count;
 	public float rate;
 
+	void Awake()
+	{
+		enemy = GameObject.FindWithTag("Enemy");
+	}
 }

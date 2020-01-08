@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour {
 
 	public Wave[] waves;
 
+	public Transform Enemy;
 	public Transform spawnPoint;
 
 	public float timeBetweenWaves = 5f;
@@ -56,7 +57,7 @@ public class WaveSpawner : MonoBehaviour {
 
 		for (int i = 0; i < wave.count; i++)
 		{
-			SpawnEnemy(wave.enemy);
+			Instantiate(Enemy, spawnPoint.position, spawnPoint.rotation);
 			yield return new WaitForSeconds(1f / wave.rate);
 		}
 

@@ -9,6 +9,8 @@ public class EnemyMovement : MonoBehaviour {
 
 	private Enemy enemy;
 
+	//public GameObject GameOver;
+
 	void Start()
 	{
 		enemy = GetComponent<Enemy>();
@@ -20,6 +22,7 @@ public class EnemyMovement : MonoBehaviour {
 	{
 		Vector3 dir = target.position - transform.position;
 		transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+		transform.LookAt(2* transform.position - target.position, Vector3.up);
 
 		if (Vector3.Distance(transform.position, target.position) <= 0.4f)
 		{
@@ -45,7 +48,11 @@ public class EnemyMovement : MonoBehaviour {
 	{
 		PlayerStats.Lives--;
 		WaveSpawner.EnemiesAlive--;
-		Destroy(gameObject);
+		gameObject.SetActive(false);
+
+		//Time.timeScale = 0;
+		//GameOver.SetActive(true);
+
 	}
 
 }

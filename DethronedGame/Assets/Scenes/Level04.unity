@@ -1932,6 +1932,7 @@ MonoBehaviour:
   - enemy: {fileID: 146912, guid: 019275f64b969fd4699297cf9d51c36a, type: 3}
     count: 10
     rate: 3
+  Enemy: {fileID: 428036, guid: e28a0c6f43750a8418e0d321b41b5f3a, type: 3}
   spawnPoint: {fileID: 2093475345}
   timeBetweenWaves: 1
   waveCountdownText: {fileID: 954626588}

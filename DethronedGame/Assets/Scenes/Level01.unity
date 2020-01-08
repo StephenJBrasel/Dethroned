@@ -254,6 +254,7 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 1000013152263656, guid: d1a44c91881cde9468c03bf6f05718f7,
       type: 3}
     upgradeCost: 250
+  outlines: []
 --- !u!1 &10531147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,6 +1846,7 @@ MonoBehaviour:
   - enemy: {fileID: 146912, guid: 019275f64b969fd4699297cf9d51c36a, type: 3}
     count: 10
     rate: 3
+  Enemy: {fileID: 428036, guid: e28a0c6f43750a8418e0d321b41b5f3a, type: 3}
   spawnPoint: {fileID: 2093475345}
   timeBetweenWaves: 1
   waveCountdownText: {fileID: 954626588}

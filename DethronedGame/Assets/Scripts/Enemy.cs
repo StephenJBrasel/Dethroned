@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour {
 	{
 		health -= amount;
 
-		healthBar.fillAmount = health / startHealth;
+		//healthBar.fillAmount = health / startHealth;
 
 		if (health <= 0 && !isDead)
 		{
@@ -50,11 +50,12 @@ public class Enemy : MonoBehaviour {
 		PlayerStats.Money += worth;
 
 		GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
-		Destroy(effect, 5f);
+		Destroy(effect, 1f);
 
 		WaveSpawner.EnemiesAlive--;
 
 		Destroy(gameObject);
+		gameObject.SetActive(false);
 	}
 
 }
